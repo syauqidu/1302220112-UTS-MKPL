@@ -10,7 +10,7 @@ public class Person {
 	private String address;
 
 	private boolean isForeigner;
-	private Gender gender; // true = Laki-laki, false = Perempuan
+	private Gender gender;
 
 	private Person spouse;
 
