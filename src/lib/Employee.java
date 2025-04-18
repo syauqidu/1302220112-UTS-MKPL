@@ -25,9 +25,8 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	// Menghitung berapa lama pegawai bekerja dalam setahun ini
 	public int getMonthWorking() {
-		// Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
-		// bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		if (date.getYear() == joinDate.getYear()) {
 			return date.getMonthValue() - joinDate.getMonthValue();
@@ -36,6 +35,7 @@ public class Employee {
 		}
 	}
 
+	//Menhitung Annual Tax seorang employee
 	public int getAnnualIncomeTax() {
 		int monthWorkingInYear = getMonthWorking();
 		return TaxFunction.calculateTax(personInfo, salary, monthWorkingInYear);
