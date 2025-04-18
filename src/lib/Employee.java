@@ -25,19 +25,19 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public int getAnnualIncomeTax() {
-
+	public int getMonthWorking() {
 		// Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
 		// bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
-		int monthWorkingInYear;
-
 		if (date.getYear() == joinDate.getYear()) {
-			monthWorkingInYear = date.getMonthValue() - joinDate.getMonthValue();
+			return date.getMonthValue() - joinDate.getMonthValue();
 		} else {
-			monthWorkingInYear = 12;
+			return 12;
 		}
+	}
 
+	public int getAnnualIncomeTax() {
+		int monthWorkingInYear = getMonthWorking();
 		return TaxFunction.calculateTax(personInfo, salary, monthWorkingInYear);
 	}
 }
