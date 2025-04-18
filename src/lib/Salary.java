@@ -37,23 +37,8 @@ public class Salary {
 	 * 7.000.000 per bulan) Jika pegawai adalah warga negara asing gaji bulanan
 	 * diperbesar sebanyak 50%
 	 */
-	public void setMonthlySalary(Person person, int grade) {
-		if (grade == 1) {
-			monthlySalary = 3000000;
-			if (person.isForeigner()) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		} else if (grade == 2) {
-			monthlySalary = 5000000;
-			if (person.isForeigner()) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		} else if (grade == 3) {
-			monthlySalary = 7000000;
-			if (person.isForeigner()) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		}
+	public void setMonthlySalary(Person person, SalaryGrade salaryGrade) {
+		this.monthlySalary = salaryGrade.calculateSalary(person);
 	}
 
 }
