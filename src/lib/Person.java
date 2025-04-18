@@ -10,15 +10,14 @@ public class Person {
 	private String address;
 
 	private boolean isForeigner;
-	private boolean gender; // true = Laki-laki, false = Perempuan
+	private Gender gender; // true = Laki-laki, false = Perempuan
 
 	private Person spouse;
 
 	private List<Person> children;
 
 	public Person(String firstName, String lastName, String idNumber, String address, boolean isForeigner,
-			boolean gender) {
-		super();
+			Gender gender) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.idNumber = idNumber;
@@ -56,7 +55,7 @@ public class Person {
 		return isForeigner;
 	}
 
-	public boolean isGender() {
+	public Gender getGender() {
 		return gender;
 	}
 

@@ -10,22 +10,15 @@ public class Employee {
 	private String employeeId;
 	private Person personInfo;
 
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
-	private int monthWorkingInYear;
+	private LocalDate joinDate;
 
 	private Salary salary;
 
-	public Employee(String employeeId, Person personInfo, int yearJoined, int monthJoined, int dayJoined,
-			int monthWorkingInYear) {
+	public Employee(String employeeId, Person personInfo, LocalDate joinDate) {
 		super();
 		this.employeeId = employeeId;
 		this.personInfo = personInfo;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
-		this.monthWorkingInYear = monthWorkingInYear;
+		this.joinDate = joinDate;
 	}
 
 	public void setSalary(Salary salary) {
@@ -37,9 +30,10 @@ public class Employee {
 		// Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
 		// bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
+		int monthWorkingInYear;
 
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == joinDate.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - joinDate.getMonthValue();
 		} else {
 			monthWorkingInYear = 12;
 		}
