@@ -6,7 +6,6 @@ public class Salary {
 	private int annualDeductible;
 
 	public Salary(int monthlySalary, int otherMonthlyIncome, int annualDeductible) {
-		super();
 		this.monthlySalary = monthlySalary;
 		this.otherMonthlyIncome = otherMonthlyIncome;
 		this.annualDeductible = annualDeductible;
