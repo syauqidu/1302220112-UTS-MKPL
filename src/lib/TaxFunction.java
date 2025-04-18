@@ -15,10 +15,9 @@ public class TaxFunction {
 	 */
 	
 	
-	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
-		
-		int tax = 0;
-		
+	public static int calculateTax(Person person, Salary salary, int numberOfMonthWorking) {
+		int tax;
+		int numberOfChildren = person.getChildren().size();
 		if (numberOfMonthWorking > 12) {
 			System.err.println("More than 12 month working per year");
 		}
@@ -27,10 +26,10 @@ public class TaxFunction {
 			numberOfChildren = 3;
 		}
 		
-		if (isMarried) {
-			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - (54000000 + 4500000 + (numberOfChildren * 1500000))));
+		if (person.getSpouse() != null) {
+			tax = (int) Math.round(0.05 * (((salary.getMonthlySalary() + salary.getOtherMonthlyIncome()) * numberOfMonthWorking) - salary.getAnnualDeductible() - (54000000 + 4500000 + (numberOfChildren * 1500000))));
 		}else {
-			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - 54000000));
+			tax = (int) Math.round(0.05 * (((salary.getMonthlySalary() + salary.getOtherMonthlyIncome()) * numberOfMonthWorking) - salary.getAnnualDeductible() - 54000000));
 		}
 		
 		if (tax < 0) {
